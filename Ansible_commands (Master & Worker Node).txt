@@ -10,6 +10,83 @@ M: ansible dev -m ping and type yes
 
 
 
+Playbook Script
+
+
+vi main.yml   //filename  in master node
+
+
+
+---
+- name: Install Apache on Ubuntu
+  hosts: dev
+  become: true
+
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install Apache2
+      ansible.builtin.apt:
+        name: apache2
+        state: present
+
+    - name: Ensure Apache is started and enabled
+      ansible.builtin.service:
+        name: apache2
+        state: started
+        enabled: true
+
+ansible-playbook main.yml  // Exceute command 
+
+copy the workder public ip and paste it browser to view the output 
+
+
+---------------------------------------
+
+stop apache
+-------------------------
+---
+- name: Stop Apache on Ubuntu
+  hosts: dev
+  become: true
+
+  tasks:
+    - name: Stop the Apache2 service
+      ansible.builtin.service:
+        name: apache2
+        state: stopped
+        enabled: false 
+
+---------------------------------------------------------------------
+
+---
+- name: Install and configure Nginx on Ubuntu
+  hosts: dev
+  become: true
+
+  tasks:
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Install Nginx
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+
+    - name: Ensure Nginx is started and enabled
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+
+
+
+
 
 
 

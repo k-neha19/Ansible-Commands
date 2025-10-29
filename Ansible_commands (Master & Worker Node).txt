@@ -1,8 +1,19 @@
-bash <(curl -sL https://tinyurl.com/munbkzpb)  // workernode
+m&w :  sudo su -  
+      apt update -y
+m: bash <(curl -sL https://tinyurl.com/mse8n4k6)  //  masternode
+w: bash <(curl -sL https://tinyurl.com/munbkzpb)  // workernode
+m : give groups no , name and ip of worker grp 
+W : copy sudo/nano cmd it will be present there and paste the key generated in master key
+W: sudo systemctl restart ssh
+M: su -ansible 
+M: ansible dev -m ping and type yes 
 
 
 
-bash <(curl -sL https://tinyurl.com/mse8n4k6)  //  masternode
+
+
+
+
 
 
 
